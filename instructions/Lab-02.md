@@ -121,23 +121,23 @@ lab:
 
     ```text
     Querying AdventureWorks database
-    SELECT COUNT(*) FROM production.vproductanddescription
-    1764
+    SELECT COUNT(*) FROM product
+    504
 
-    SELECT COUNT(*) FROM purchasing.vendor
+    SELECT COUNT(*) FROM vendor
     104
 
-    SELECT COUNT(*) FROM sales.specialoffer
+    SELECT COUNT(*) FROM specialoffer
     16
 
-    SELECT COUNT(*) FROM sales.salesorderheader
+    SELECT COUNT(*) FROM salesorderheader
     31465
 
-    SELECT COUNT(*) FROM sales.salesorderdetail
+    SELECT COUNT(*) FROM salesorderdetail
     121317
 
-    SELECT COUNT(*) FROM person.person
-    19972
+    SELECT COUNT(*) FROM customer
+    19185
     ```
 
 ### 任务 3：执行数据库到 Azure 虚拟机的脱机迁移
@@ -208,10 +208,10 @@ lab:
 
     验证此查询返回 16 行。这与本地数据库中的行数相同。
 
-1. 查询 *sales.vendor* 表中的行数。
+1. 查询 *vendor* 表中的行数。
 
     ```SQL
-    SELECT COUNT(*) FROM sales.vendor;
+    SELECT COUNT(*) FROM vendor;
     ```
 
     该表应包含 104 行。
@@ -230,9 +230,9 @@ lab:
     | 用户名 | azureuser |
     | 默认架构 | AdventureWorks |
 
-1. 在“**密码**”中，键入“**Pa55w.rd**”，然后单击“**确定**”。
+1. 在密码提示符下，键入**Pa55w.rd**并单击**确定**。
 1. 单击“**确定**”，然后单击“**关闭**”。
-1. 单击“**MySQL on Azure**”
+1. 在**数据库**菜单上，单击**连接到数据库**，选择**Azure 上的 MySQL**，然后单击**确定**。
 1. 在“**adventureworks**”中，浏览数据库中的表。这些表应与本地数据库中的表相同。
 
 ### 任务 5：根据 Azure 虚拟机上的数据库重新配置和测试示例应用程序
@@ -569,17 +569,17 @@ lab:
 
 ### 任务 7：根据 Azure Database for MySQL 中的数据库重新配置和测试示例应用程序
 
-1. 返回到“**终端**”窗口。
-1. 移动到“*code/mysql/AdventureWorksQueries*”文件夹：
+1. 返回到**LON-DEV-01**虚拟机上的**终端**窗口。
+1. 移动到**workshop/migration_samples/code/mysql/AdventureWorksQueries**文件夹。
 
    ```bash
-   cd code/mysql/AdventureWorksQueries
+   cd ~/workshop/migration_samples/code/mysql/AdventureWorksQueries
    ```
 
-1. 使用代码编辑器打开 App.config 文件：
+1. 使用 nano 编辑器打开 App.config 文件：
 
     ```bash
-    code App.config
+    nano App.config
     ```
 
 1. 更改“**ConnectionString**”设置的值，将 Azure 虚拟机的 IP 地址替换为“**adventureworks[nnn].MySQL.database.azure.com**”。将“**用户 ID**”更改为“**awadmin@adventureworks[nnn]**”。将“**密码**”更改为“**Pa55w.rdDemo**”。文件内容应如下：
@@ -588,12 +588,12 @@ lab:
     <?xml version="1.0" encoding="utf-8" ?>
         <configuration>
           <appSettings>
-            <add key="ConnectionString" value="Server=adventureworks[nnn].MySQL.database.azure.com;Database=adventureworks;Port=3306;User Id=awadmin@adventureworks[nnn];Password=Pa55w.rdDemo" />
+            <add key="ConnectionString" value="Server=adventureworks[nnn].MySQL.database.azure.com;database=adventureworks;port=3306;uid=awadmin@adventureworks[nnn];password=Pa55w.rdDemo" />
           </appSettings>
         </configuration>
     ```
 
-    应用程序现在应连接到在 Azure 虚拟机上运行的数据库。
+    应用程序现在应连接到在 Azure Database for MySQL 上运行的数据库。
 
 1. 保存文件并关闭编辑器。
 
@@ -603,4 +603,5 @@ lab:
     dotnet run
     ```
 
+   应用应显示与往常相同的结果，区别在于，应用现在要从 Azure 中运行的数据库中检索数据。
    现在，你已将数据库迁移到 Azure Database for MySQL，并重新配置了应用程序以使用新数据库。
