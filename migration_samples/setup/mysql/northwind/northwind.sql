@@ -4592,15 +4592,6 @@ DELIMITER ;
 # Add PROCEDURE  "sp_employees_rollup" rollup SAMPLE                     #
 # ---------------------------------------------------------------------- #
   
-DELIMITER $$
-
-DROP PROCEDURE IF EXISTS `sp_employees_rollup`$$
-CREATE PROCEDURE `sp_employees_rollup` ()
-BEGIN
-SELECT Distinct City ,Sum(Salary) Salary_By_City FROM employees
-GROUP BY City WITH ROLLUP;
-
-END $$
 
 DELIMITER ;
 
