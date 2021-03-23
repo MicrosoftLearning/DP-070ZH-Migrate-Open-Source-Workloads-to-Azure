@@ -515,9 +515,9 @@
 
     | 属性  | 值  |
     |---|---|
-    | 主机名 | adventureworks*[nnn]*.MySQL.database.azure.com |
+    | 主机名 | adventureworks *[nnn]* .MySQL.database.azure.com |
     | 端口 | 3306 |
-    | 用户名 | awadmin@adventureworks*[nnn]* |
+    | 用户名 | awadmin@adventureworks *[nnn]* |
     | 密码 | Pa55w.rdDemo |
 
 1. 选择“**确定**”。

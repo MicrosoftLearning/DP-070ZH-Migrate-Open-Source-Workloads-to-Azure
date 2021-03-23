@@ -69,7 +69,7 @@
 
     该虚拟机模拟你的本地环境。它正在运行 PostgreSQL 服务器，该服务器托管着你需要迁移的 AdventureWorks 数据库。
 
-1. 在教室环境中运行的 **LON-DEV-01** 虚拟机上，在在屏幕左侧的“**收藏夹**”栏上，选择“**pgAdmin4**”实用程序*。
+1. 在教室环境中运行的 **LON-DEV-01** 虚拟机上，在在屏幕左侧的“**收藏夹**”栏上，选择“**pgAdmin4**”实用程序。
 1. 在“**解锁保存的密码**”对话框中输入密码“**Pa55w.rd**”，然后选择“**确认**”。
 1. 在“**pgAdmin4**”窗口中，依次展开“**服务器**”>“**LON-DEV-01**”>“**数据库**”>“**adventureworks**”>“**架构**”。
 1. 在“**销售**”架构中，展开“**表**”。
@@ -626,10 +626,10 @@
 
     | 属性  | 值  |
     |---|---|
-    | 主机名/地址 | adventureworks*[nnn]*.postgres.database.azure.com |
+    | 主机名/地址 | adventureworks *[nnn]* .postgres.database.azure.com |
     | 端口 | 5432 |
     | 维护数据库 | postgres |
-    | 用户名 | azureuser@adventureworks*[nnn]* |
+    | 用户名 | azureuser@adventureworks *[nnn]* |
     | 密码 | Pa55w.rd |
     | 保存密码 | 已选择 |
     | 角色 | *保留空白* |
